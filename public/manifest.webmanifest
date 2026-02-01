@@ -1,0 +1,21 @@
+{
+  "name": "CA DMV Practice Test",
+  "short_name": "CA DMV Test",
+  "description": "Free California DMV permit test practice by Stars & Rights",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#253069",
+  "icons": [
+    {
+      "src": "/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -36,13 +36,13 @@ export default function Results() {
   if (!result) {
     return (
       <div className="max-w-2xl mx-auto text-center py-12 space-y-6">
-        <h1 className="text-3xl font-bold text-dmv-blue">No Results</h1>
+        <h1 className="text-3xl font-bold text-navy">No Results</h1>
         <p className="text-gray-600">
           You haven't taken a practice test yet.
         </p>
         <Link
           to="/practice"
-          className="inline-block bg-dmv-blue hover:bg-dmv-blue/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          className="inline-block bg-navy hover:bg-navy/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
         >
           Take a Practice Test
         </Link>
@@ -57,7 +57,7 @@ export default function Results() {
       {/* Result Banner */}
       <div
         className={`rounded-xl p-8 text-center text-white ${
-          result.passed ? 'bg-dmv-green' : 'bg-dmv-red'
+          result.passed ? 'bg-success' : 'bg-error'
         }`}
       >
         <div className="text-6xl mb-4">{result.passed ? '🎉' : '📚'}</div>
@@ -75,19 +75,19 @@ export default function Results() {
       <div className="bg-white rounded-xl shadow-md p-6">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-3xl font-bold text-dmv-green">
+            <div className="text-3xl font-bold text-success">
               {result.score.correct}
             </div>
             <div className="text-sm text-gray-500">Correct</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-dmv-red">
+            <div className="text-3xl font-bold text-error">
               {result.score.incorrect}
             </div>
             <div className="text-sm text-gray-500">Incorrect</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-dmv-blue">{percentage}%</div>
+            <div className="text-3xl font-bold text-navy">{percentage}%</div>
             <div className="text-sm text-gray-500">Score</div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function Results() {
         <div className="mt-4 pt-4 border-t border-gray-100">
           <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className={`h-full ${result.passed ? 'bg-dmv-green' : 'bg-dmv-red'}`}
+              className={`h-full ${result.passed ? 'bg-success' : 'bg-error'}`}
               style={{ width: `${percentage}%` }}
             />
           </div>
@@ -110,7 +110,7 @@ export default function Results() {
       {/* Review Wrong Answers */}
       {result.answers.filter(a => !a.correct).length > 0 && (
         <div className="bg-white rounded-xl shadow-md p-6">
-          <h2 className="text-xl font-bold text-dmv-blue mb-4">
+          <h2 className="text-xl font-bold text-navy mb-4">
             📝 Review Missed Questions ({result.answers.filter(a => !a.correct).length})
           </h2>
           <div className="space-y-4">
@@ -122,16 +122,16 @@ export default function Results() {
                 return (
                   <div
                     key={answer.questionId}
-                    className="p-4 bg-red-50 rounded-lg border border-dmv-red/20"
+                    className="p-4 bg-red-50 rounded-lg border border-error/20"
                   >
                     <p className="font-medium text-gray-800 mb-3">
                       {question.question}
                     </p>
                     <div className="space-y-2 text-sm">
-                      <p className="text-dmv-red">
+                      <p className="text-error">
                         ✗ Your answer: {question.options[answer.selected]}
                       </p>
-                      <p className="text-dmv-green">
+                      <p className="text-success">
                         ✓ Correct answer: {question.options[question.correctAnswer]}
                       </p>
                       <p className="text-gray-600 mt-2 pt-2 border-t border-red-100">
@@ -147,7 +147,7 @@ export default function Results() {
 
       {/* Category Breakdown */}
       <div className="bg-white rounded-xl shadow-md p-6">
-        <h2 className="text-xl font-bold text-dmv-blue mb-4">📊 Performance by Category</h2>
+        <h2 className="text-xl font-bold text-navy mb-4">📊 Performance by Category</h2>
         <div className="space-y-3">
           {Array.from(new Set(result.questions.map(q => q.category))).map(category => {
             const categoryQuestions = result.questions.filter(q => q.category === category)
@@ -167,12 +167,12 @@ export default function Results() {
                   </div>
                   <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div
-                      className={`h-full ${pct >= 83 ? 'bg-dmv-green' : pct >= 60 ? 'bg-dmv-gold' : 'bg-dmv-red'}`}
+                      className={`h-full ${pct >= 83 ? 'bg-success' : pct >= 60 ? 'bg-warning' : 'bg-error'}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
                 </div>
-                <span className={`text-sm font-medium ${pct >= 83 ? 'text-dmv-green' : 'text-dmv-red'}`}>
+                <span className={`text-sm font-medium ${pct >= 83 ? 'text-success' : 'text-error'}`}>
                   {pct}%
                 </span>
               </div>
@@ -185,13 +185,13 @@ export default function Results() {
       <div className="flex flex-col sm:flex-row gap-4">
         <Link
           to="/practice"
-          className="flex-1 text-center bg-dmv-blue hover:bg-dmv-blue/90 text-white py-3 rounded-lg font-semibold transition-colors"
+          className="flex-1 text-center bg-navy hover:bg-navy/90 text-white py-3 rounded-lg font-semibold transition-colors"
         >
           Try Again
         </Link>
         <Link
           to="/study"
-          className="flex-1 text-center bg-dmv-gold hover:bg-dmv-gold/90 text-white py-3 rounded-lg font-semibold transition-colors"
+          className="flex-1 text-center bg-red hover:bg-red/90 text-white py-3 rounded-lg font-semibold transition-colors"
         >
           Study More
         </Link>
@@ -199,12 +199,12 @@ export default function Results() {
 
       {/* Tips based on result */}
       <div className="bg-white rounded-xl shadow-md p-6">
-        <h2 className="text-xl font-bold text-dmv-blue mb-4">
+        <h2 className="text-xl font-bold text-navy mb-4">
           {result.passed ? '✅ Next Steps' : '💡 Study Tips'}
         </h2>
         {result.passed ? (
           <ul className="space-y-2 text-gray-700">
-            <li>• Schedule your DMV appointment at <a href="https://www.dmv.ca.gov/portal/appointments/" target="_blank" rel="noopener noreferrer" className="text-dmv-blue hover:underline">dmv.ca.gov</a></li>
+            <li>• Schedule your DMV appointment at <a href="https://www.dmv.ca.gov/portal/appointments/" target="_blank" rel="noopener noreferrer" className="text-navy hover:underline">dmv.ca.gov</a></li>
             <li>• Bring required documents (ID, SSN, residency proof)</li>
             <li>• Get a good night's sleep before your test</li>
             <li>• Review the California Driver Handbook one more time</li>

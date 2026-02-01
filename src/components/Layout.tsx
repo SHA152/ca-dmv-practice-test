@@ -13,16 +13,20 @@ export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col">
       {/* Header */}
-      <header className="bg-dmv-blue text-white shadow-lg">
+      <header className="bg-navy text-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
-              <div className="text-3xl">🚗</div>
+              <img 
+                src="/logo-icon.svg" 
+                alt="Stars & Rights" 
+                className="h-10 w-10"
+              />
               <div>
                 <h1 className="text-xl font-bold">CA DMV Practice Test</h1>
-                <p className="text-xs text-white/70">Free Permit Test Prep</p>
+                <p className="text-xs text-white/70">by Stars & Rights</p>
               </div>
             </Link>
             
@@ -47,6 +51,7 @@ export default function Layout() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +68,7 @@ export default function Layout() {
         
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <nav className="md:hidden border-t border-white/20 px-4 py-2">
+          <nav className="md:hidden border-t border-white/20 px-4 py-2 bg-navy/95">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -88,7 +93,7 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-dmv-blue text-white/60 text-center py-6">
+      <footer className="bg-navy text-white/60 text-center py-6">
         <p className="text-sm">
           © {new Date().getFullYear()} Stars & Rights LLC · Not affiliated with California DMV
         </p>

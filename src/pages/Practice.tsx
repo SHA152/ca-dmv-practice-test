@@ -77,9 +77,13 @@ export default function Practice() {
   if (!testStarted) {
     return (
       <div className="max-w-2xl mx-auto text-center space-y-8 py-12">
-        <h1 className="text-3xl font-bold text-dmv-blue">Practice Test</h1>
+        <h1 className="text-3xl font-bold text-navy">Practice Test</h1>
         <div className="bg-white rounded-xl shadow-md p-8 space-y-6">
-          <div className="text-6xl">🚗</div>
+          <img 
+            src="/logo-icon.svg" 
+            alt="Stars & Rights" 
+            className="h-16 w-16 mx-auto"
+          />
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-gray-800">
               California DMV Written Test
@@ -98,7 +102,7 @@ export default function Practice() {
 
           <button
             onClick={startTest}
-            className="bg-dmv-blue hover:bg-dmv-blue/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg"
+            className="bg-navy hover:bg-navy/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg"
           >
             Start Test
           </button>
@@ -117,14 +121,14 @@ export default function Practice() {
         <div className="flex justify-between text-sm text-gray-600 mb-2">
           <span>Question {currentIndex + 1} of {QUESTIONS_PER_TEST}</span>
           <span>
-            <span className="text-dmv-green">✓ {score.correct}</span>
+            <span className="text-success">✓ {score.correct}</span>
             {' · '}
-            <span className="text-dmv-red">✗ {score.incorrect}</span>
+            <span className="text-error">✗ {score.incorrect}</span>
           </span>
         </div>
         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
-            className="h-full bg-dmv-blue transition-all"
+            className="h-full bg-navy transition-all"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -146,16 +150,16 @@ export default function Practice() {
             
             if (showResult) {
               if (index === currentQuestion.correctAnswer) {
-                buttonClass += 'border-dmv-green bg-green-50 text-dmv-green'
+                buttonClass += 'border-success bg-green-50 text-success'
               } else if (index === selectedAnswer && index !== currentQuestion.correctAnswer) {
-                buttonClass += 'border-dmv-red bg-red-50 text-dmv-red'
+                buttonClass += 'border-error bg-red-50 text-error'
               } else {
                 buttonClass += 'border-gray-200 text-gray-400'
               }
             } else if (selectedAnswer === index) {
-              buttonClass += 'border-dmv-blue bg-blue-50 text-dmv-blue'
+              buttonClass += 'border-navy bg-blue-50 text-navy'
             } else {
-              buttonClass += 'border-gray-200 hover:border-dmv-blue hover:bg-blue-50'
+              buttonClass += 'border-gray-200 hover:border-navy hover:bg-blue-50'
             }
             
             return (
@@ -177,11 +181,11 @@ export default function Practice() {
         {showResult && (
           <div className={`mt-6 p-4 rounded-lg ${
             selectedAnswer === currentQuestion.correctAnswer 
-              ? 'bg-green-50 border border-dmv-green' 
-              : 'bg-red-50 border border-dmv-red'
+              ? 'bg-green-50 border border-success' 
+              : 'bg-red-50 border border-error'
           }`}>
             <p className={`font-semibold mb-2 ${
-              selectedAnswer === currentQuestion.correctAnswer ? 'text-dmv-green' : 'text-dmv-red'
+              selectedAnswer === currentQuestion.correctAnswer ? 'text-success' : 'text-error'
             }`}>
               {selectedAnswer === currentQuestion.correctAnswer ? '✓ Correct!' : '✗ Incorrect'}
             </p>
@@ -197,7 +201,7 @@ export default function Practice() {
               className={`flex-1 py-3 rounded-lg font-semibold transition-colors ${
                 selectedAnswer === null
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-dmv-blue hover:bg-dmv-blue/90 text-white'
+                  : 'bg-navy hover:bg-navy/90 text-white'
               }`}
             >
               Submit Answer
@@ -205,7 +209,7 @@ export default function Practice() {
           ) : (
             <button
               onClick={handleNext}
-              className="flex-1 py-3 bg-dmv-blue hover:bg-dmv-blue/90 text-white rounded-lg font-semibold transition-colors"
+              className="flex-1 py-3 bg-navy hover:bg-navy/90 text-white rounded-lg font-semibold transition-colors"
             >
               {currentIndex + 1 >= QUESTIONS_PER_TEST ? 'See Results' : 'Next Question →'}
             </button>

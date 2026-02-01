@@ -14,7 +14,7 @@ export default function Study() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-dmv-blue">Study Questions</h1>
+          <h1 className="text-3xl font-bold text-navy">Study Questions</h1>
           <p className="text-gray-600">
             {filteredQuestions.length} questions
             {selectedCategory && ` in ${selectedCategory}`}
@@ -27,7 +27,7 @@ export default function Study() {
             setSelectedCategory(e.target.value || null)
             setExpandedQuestion(null)
           }}
-          className="px-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-dmv-blue"
+          className="px-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-navy"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -44,7 +44,7 @@ export default function Study() {
           onClick={() => setSelectedCategory(null)}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             !selectedCategory
-              ? 'bg-dmv-blue text-white'
+              ? 'bg-navy text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
@@ -58,7 +58,7 @@ export default function Study() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selectedCategory === cat
-                  ? 'bg-dmv-blue text-white'
+                  ? 'bg-navy text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -82,7 +82,7 @@ export default function Study() {
               }}
               className="w-full px-6 py-4 text-left flex items-start gap-4 hover:bg-gray-50 transition-colors"
             >
-              <span className="text-dmv-blue font-bold text-lg min-w-[2.5rem]">
+              <span className="text-navy font-bold text-lg min-w-[2.5rem]">
                 Q{q.id}
               </span>
               <span className="flex-1 text-gray-800">{q.question}</span>
@@ -103,7 +103,7 @@ export default function Study() {
                       key={index}
                       className={`p-3 rounded-lg ${
                         showAnswer === q.id && index === q.correctAnswer
-                          ? 'bg-green-50 border border-dmv-green'
+                          ? 'bg-green-50 border border-success'
                           : 'bg-gray-50'
                       }`}
                     >
@@ -112,20 +112,20 @@ export default function Study() {
                       </span>
                       {option}
                       {showAnswer === q.id && index === q.correctAnswer && (
-                        <span className="ml-2 text-dmv-green">✓ Correct</span>
+                        <span className="ml-2 text-success">✓ Correct</span>
                       )}
                     </div>
                   ))}
 
                   {showAnswer === q.id ? (
-                    <div className="p-4 bg-blue-50 rounded-lg border border-dmv-blue">
-                      <p className="font-semibold text-dmv-blue mb-1">Explanation:</p>
+                    <div className="p-4 bg-blue-50 rounded-lg border border-navy">
+                      <p className="font-semibold text-navy mb-1">Explanation:</p>
                       <p className="text-gray-700">{q.explanation}</p>
                     </div>
                   ) : (
                     <button
                       onClick={() => setShowAnswer(q.id)}
-                      className="w-full py-2 bg-dmv-blue hover:bg-dmv-blue/90 text-white rounded-lg font-medium transition-colors"
+                      className="w-full py-2 bg-navy hover:bg-navy/90 text-white rounded-lg font-medium transition-colors"
                     >
                       Show Answer
                     </button>
