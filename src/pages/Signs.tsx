@@ -13,16 +13,22 @@ const signCategories: Record<string, Sign[]> = {
     { name: 'Yield', image: 'yield.png', meaning: 'Slow down, be ready to stop, and yield right-of-way to traffic and pedestrians.' },
     { name: 'Stop Here on Red', image: 'stop-here-on-red.png', meaning: 'Stop at this sign when the traffic light is red, not at the intersection.' },
     { name: 'Stop Except Right Turn', image: 'stop-except-right-turn.png', meaning: 'All traffic must stop except vehicles making a right turn.' },
+    { name: 'Stop Ahead', image: 'stop-ahead.png', meaning: 'Warning: Stop sign ahead. Prepare to stop.' },
+    { name: 'Yield Ahead', image: 'yield-ahead.png', meaning: 'Warning: Yield sign ahead. Prepare to slow down and yield.' },
+    { name: 'Signal Ahead', image: 'signal-ahead.png', meaning: 'Warning: Traffic signal ahead. Prepare to stop if light is red or yellow.' },
   ],
   'Speed & Lane Control': [
     { name: 'Speed Limit', image: 'speed-limit.png', meaning: 'Maximum legal speed under ideal conditions. Slow down in bad weather.' },
     { name: 'Speed Limit (Max & Min)', image: 'speed-limit--maximum-and-minimum.png', meaning: 'Shows both maximum and minimum speeds. Don\'t drive faster or slower than posted.' },
     { name: 'Minimum Speed Limit', image: 'minimum-speed-limit.png', meaning: 'You must drive at least this speed if conditions allow. Slower traffic should exit.' },
+    { name: 'Speed Limit Ahead', image: 'speed-limit-ahead.png', meaning: 'Warning: Speed zone ahead. Prepare to adjust your speed.' },
     { name: 'Slower Traffic Keep Right', image: 'slower-traffic-keep-right.png', meaning: 'If you are driving slower than other traffic, stay in the right lane.' },
     { name: 'Keep Right', image: 'keep-right.png', meaning: 'Keep to the right side of a divider or obstruction.' },
     { name: 'Lane Use Control', image: 'lane-use-control-sign.png', meaning: 'Shows which lanes can be used for which movements (turns, through traffic).' },
     { name: 'Center Turn Lane', image: 'center-turn-lane.png', meaning: 'Shared center lane for left turns only. Do not travel in this lane.' },
     { name: 'HOV/Carpool Lane', image: 'restricted-or-hov-or-carpool-lane-ahead.png', meaning: 'Lane restricted to high-occupancy vehicles (carpools, buses, motorcycles).' },
+    { name: 'Lane Ends', image: 'lane-ends.png', meaning: 'Warning: Your lane is ending ahead. Merge safely into another lane.' },
+    { name: 'Merging Traffic', image: 'merging-traffic.png', meaning: 'Warning: Traffic merging from another road. Be prepared to adjust speed.' },
   ],
   'Do Not Enter & Wrong Way': [
     { name: 'Do Not Enter', image: 'do-not-enter.png', meaning: 'Do not enter this road or lane. You would be going the wrong direction.' },
@@ -30,6 +36,9 @@ const signCategories: Record<string, Sign[]> = {
     { name: 'Road Closed', image: 'road-closed.png', meaning: 'Road is closed to all traffic. Find an alternate route.' },
     { name: 'One Way', image: 'one-way.png', meaning: 'Traffic flows in one direction only, as shown by the arrow.' },
     { name: 'Divided Highway', image: 'divided-highway.png', meaning: 'Highway ahead is divided. Keep right of the divider.' },
+    { name: 'Road Divider Ahead', image: 'road-divider-ahead.png', meaning: 'Warning: Road will divide into separate roadways ahead.' },
+    { name: 'Road Divider Ends', image: 'road-divider-end.png', meaning: 'Warning: Divided highway ends. Two-way traffic ahead.' },
+    { name: 'Two Way Road', image: 'two-way-road.png', meaning: 'Warning: Two-way traffic ahead. Stay on your side of the road.' },
   ],
   'No Turns & U-Turns': [
     { name: 'No U-Turn', image: 'no-u-turn.png', meaning: 'U-turns are not allowed at this location.' },
@@ -49,6 +58,14 @@ const signCategories: Record<string, Sign[]> = {
     { name: 'Left Turn Yield on Green', image: 'left-turn-yeild-on-green.png', meaning: 'Left turn permitted on green but you must yield to oncoming traffic.' },
     { name: 'Opposite Traffic Extended Green', image: 'opposite-traffic-extended-green.png', meaning: 'Oncoming traffic has an extended green light. Wait before turning.' },
   ],
+  'Warning Signs': [
+    { name: 'Crossroad', image: 'crossroad.png', meaning: 'Warning: Intersection ahead. Watch for cross traffic.' },
+    { name: 'Winding Road', image: 'winding-road.png', meaning: 'Warning: Series of curves ahead. Reduce speed.' },
+    { name: 'Slippery When Wet', image: 'slippery-when-wet.png', meaning: 'Warning: Road may be slippery when wet. Reduce speed in rain.' },
+    { name: 'Pedestrian Crossing', image: 'pedestrian-crossing.png', meaning: 'Warning: Pedestrian crossing ahead. Watch for and yield to pedestrians.' },
+    { name: 'School Crosswalk', image: 'school-crosswalk.png', meaning: 'Warning: School crossing ahead. Watch for children, obey reduced speed.' },
+    { name: 'Slow Moving Vehicle', image: 'slow-moving-vehicle.png', meaning: 'Orange triangle on vehicle means it travels under 25 mph. Pass with care.' },
+  ],
   'Passing & Parking': [
     { name: 'Do Not Pass', image: 'do-not-pass.png', meaning: 'Do not pass other vehicles in this area. Stay in your lane.' },
     { name: 'Pass with Care', image: 'pass-with-care.png', meaning: 'Passing is allowed but use extra caution. Check for oncoming traffic.' },
@@ -56,7 +73,7 @@ const signCategories: Record<string, Sign[]> = {
     { name: 'Reserved Handicap Parking', image: 'reserved-parking-for-handicap.png', meaning: 'Parking reserved for vehicles with disabled placard or plates only.' },
     { name: 'Emergency Stopping Only', image: 'emergency-stopping-only.png', meaning: 'Only stop here for emergencies. No parking or standing.' },
   ],
-  'Prohibited Vehicles & Pedestrians': [
+  'Prohibited Vehicles': [
     { name: 'No Trucks', image: 'no-trucks.png', meaning: 'Trucks or commercial vehicles are not allowed on this road.' },
     { name: 'No Bicycles', image: 'no-bicycles.png', meaning: 'Bicycles are not allowed on this road or path.' },
     { name: 'No Pedestrian Crossing', image: 'no-pedestrian-crossing.png', meaning: 'Pedestrians may not cross at this location.' },
@@ -64,6 +81,16 @@ const signCategories: Record<string, Sign[]> = {
   'Railroad Crossings': [
     { name: 'Railroad Crossing', image: 'railroad-crossing.png', meaning: 'Railroad tracks ahead. Look both ways, listen, and be prepared to stop.' },
     { name: 'Railroad Crossing Gate', image: 'railroad-crossing-gate.png', meaning: 'Crossing has automatic gates. Stop when gates are down or lights flash.' },
+    { name: 'Railroad Emergency Sign', image: 'report-problem-and-emergency-sign-at-railroad-crossing.png', meaning: 'Use this number to report emergencies or problems at the crossing.' },
+  ],
+  'Service Signs (Blue)': [
+    { name: 'Hospital', image: 'hospital-sign.png', meaning: 'Hospital or emergency room nearby. Follow signs for directions.' },
+    { name: 'Emergency Medical Services', image: 'emergency-medical-services.png', meaning: 'Emergency medical services available nearby or at next exit.' },
+    { name: 'Gas Station', image: 'gas-station-ahead.png', meaning: 'Fuel station available nearby or at next exit.' },
+    { name: 'Lodging', image: 'lodging.png', meaning: 'Hotel/motel accommodations available nearby or at next exit.' },
+    { name: 'Rest Area', image: 'rest-area-guide-sign.png', meaning: 'Rest area ahead with restrooms and facilities.' },
+    { name: 'Camping', image: 'tent-camping.png', meaning: 'Campground or tent camping available nearby.' },
+    { name: 'Bicycle Route', image: 'bicycle-route.png', meaning: 'Designated bicycle route. Cyclists may use this road.' },
   ],
 }
 
@@ -88,19 +115,20 @@ const pavementMarkings = [
 
 export default function Signs() {
   const [activeCategory, setActiveCategory] = useState('Stop & Yield')
+  const categories = Object.keys(signCategories)
 
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-navy">Road Signs & Markings</h1>
         <p className="text-gray-600">
-          Learn all signs and markings for the CA DMV test
+          Learn all 65 signs and markings for the CA DMV test
         </p>
       </div>
 
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-2">
-        {Object.keys(signCategories).map((category) => (
+        {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
@@ -110,7 +138,7 @@ export default function Signs() {
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            {category}
+            {category} ({signCategories[category].length})
           </button>
         ))}
       </div>
